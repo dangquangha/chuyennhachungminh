@@ -29,7 +29,7 @@ export default function ProductLink({ product, className, children }: Props) {
       target="_blank"
       rel="noopener noreferrer sponsored"
       onClick={() => handleProductClick(product)}
-      aria-label={`${product.name}${product.price ? `, giá ${product.price}` : ''}. Xem trên Shopee (mở tab mới)`}
+      aria-label={`${product.name}${product.price ? `, giá ${product.price}` : ''}. Xem ngay (mở tab mới)`}
       className={className}
     >
       {children}
