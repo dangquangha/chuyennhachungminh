@@ -5,9 +5,9 @@ export const SITE = {
   name: 'Chuyện nhà chúng mình',
   tagline: 'Mỗi ngày một chút chuyện hay cho căn nhà nhỏ ❤️',
   avatar: '/avatar.svg',
-  // TODO: thay bằng handle và link thật của kênh
-  tiktokHandle: '@chuyennhachungminh',
-  tiktokUrl: 'https://www.tiktok.com/@chuyennhachungminh',
+  tiktokHandle: '@chuyennhachungminh_',
+  tiktokUrl: 'https://www.tiktok.com/@chuyennhachungminh_',
+  // TODO: thay bằng link Shopee store thật của kênh
   shopeeStoreUrl: 'https://shopee.vn/',
   /** Năm hiển thị trong footer */
   copyrightYear: 2026,
