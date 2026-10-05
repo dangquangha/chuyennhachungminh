@@ -43,7 +43,7 @@ Thư mục `dist/` là site tĩnh, deploy được lên Vercel, Netlify, Cloudfl
 
 ## Thông tin kênh và link
 
-Sửa trong [`src/config/site.ts`](src/config/site.ts): tên kênh, tagline, avatar, TikTok handle/URL và danh mục.
+Sửa trong [`src/config/site.ts`](src/config/site.ts): tên kênh, tagline, avatar, TikTok handle/URL, email liên hệ và danh mục.
 
 Khi đã có domain thật, thay `https://chuyennhachungminh.vn/` trong [`index.html`](index.html) (canonical, `og:url`, `og:image`).
 

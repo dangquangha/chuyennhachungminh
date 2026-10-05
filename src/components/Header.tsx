@@ -1,6 +1,6 @@
 import { SITE } from '../config/site'
 import { trackEvent } from '../lib/tracking'
-import { TikTokIcon } from './icons'
+import { MailIcon, TikTokIcon } from './icons'
 
 export default function Header() {
   return (
@@ -19,17 +19,30 @@ export default function Header() {
       <h1 className="mt-3 font-display text-[1.6rem] leading-tight font-bold text-ink">{SITE.name}</h1>
       <p className="mt-1 text-[0.95rem] text-balance text-muted">{SITE.tagline}</p>
 
-      <a
-        href={SITE.tiktokUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackEvent({ name: 'outbound_click', target: 'tiktok', placement: 'header' })}
-        className="mt-3 inline-flex min-h-9 items-center gap-1.5 rounded-full bg-white px-3.5 text-sm font-medium text-ink ring-1 ring-line transition hover:ring-primary/50 active:scale-[0.97]"
-        aria-label={`TikTok ${SITE.tiktokHandle} (mở tab mới)`}
-      >
-        <TikTokIcon className="size-4" />
-        {SITE.tiktokHandle}
-      </a>
+      {/* <div className="mt-3 flex justify-center gap-3">
+        <a
+          href={SITE.tiktokUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackEvent({ name: 'outbound_click', target: 'tiktok', placement: 'header' })}
+          className="btn-icon"
+          aria-label={`TikTok ${SITE.tiktokHandle} (mở tab mới)`}
+          title={`TikTok ${SITE.tiktokHandle}`}
+        >
+          <TikTokIcon className="size-5" />
+        </a>
+        {SITE.contactEmail && (
+          <a
+            href={`mailto:${SITE.contactEmail}`}
+            onClick={() => trackEvent({ name: 'outbound_click', target: 'email', placement: 'header' })}
+            className="btn-icon"
+            aria-label={`Gửi email liên hệ: ${SITE.contactEmail}`}
+            title={SITE.contactEmail}
+          >
+            <MailIcon className="size-5" />
+          </a>
+        )}
+      </div> */}
     </header>
   )
 }

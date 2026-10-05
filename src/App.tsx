@@ -4,6 +4,7 @@ import Header from './components/Header'
 import ProductSection from './components/ProductSection'
 import TikTokSection from './components/TikTokSection'
 import EmptyState from './components/EmptyState'
+import Contact from './components/Contact'
 
 const products = sortProducts(allProducts)
 
@@ -19,6 +20,8 @@ export default function App() {
 
         <TikTokSection />
       </main>
+
+      {/* <Contact /> */}
     </div>
   )
 }

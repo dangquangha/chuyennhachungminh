@@ -7,6 +7,8 @@ export const SITE = {
   avatar: '/avatar.svg',
   tiktokHandle: '@chuyennhachungminh_',
   tiktokUrl: 'https://www.tiktok.com/@chuyennhachungminh_',
+  /** Email liên hệ hợp tác, hiển thị cuối trang. Để chuỗi rỗng để ẩn. */
+  contactEmail: 'quangha2611@gmail.com',
 } as const
 
 /** Danh mục sản phẩm. Thêm/bớt danh mục ở đây; filter tự ẩn danh mục chưa có sản phẩm. */

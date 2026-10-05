@@ -51,14 +51,10 @@
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary-strong font-semibold text-white shadow-soft transition duration-150 select-none;
-    @apply hover:bg-primary-hover active:scale-[0.97] active:bg-primary-hover;
-  }
-
-  .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white font-semibold text-ink shadow-soft transition duration-150 select-none;
-    @apply hover:border-primary/50 active:scale-[0.97];
+  /* Nút tròn chỉ có icon (44px — đủ lớn để bấm bằng ngón tay) */
+  .btn-icon {
+    @apply grid size-11 place-items-center rounded-full bg-white text-ink shadow-soft ring-1 ring-line transition;
+    @apply hover:text-primary-strong hover:ring-primary/50 active:scale-[0.94];
   }
 }
 

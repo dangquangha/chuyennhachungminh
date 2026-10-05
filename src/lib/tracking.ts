@@ -7,7 +7,7 @@ import type { Product } from '../types/product'
 
 type TrackingEvent =
   | { name: 'product_click'; product: Product }
-  | { name: 'outbound_click'; target: 'tiktok'; placement: string }
+  | { name: 'outbound_click'; target: 'tiktok' | 'email'; placement: string }
 
 declare global {
   interface Window {
