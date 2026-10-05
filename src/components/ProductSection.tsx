@@ -41,10 +41,10 @@ export default function ProductSection({ products }: { products: Product[] }) {
 
       {visible.length > 0 ? (
         <Reveal>
-          <ul key={active} className="mt-2 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 sm:grid-cols-3 sm:gap-4">
-            {/* 2 card đầu nằm trong màn hình đầu tiên → tải ảnh ngay */}
+          <ul key={active} className="mt-2 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+            {/* 3 card đầu nằm trong màn hình đầu tiên → tải ảnh ngay */}
             {visible.map((p, i) => (
-              <ProductCard key={p.id} product={p} priority={i < 2} />
+              <ProductCard key={p.id} product={p} priority={i < 3} />
             ))}
           </ul>
         </Reveal>

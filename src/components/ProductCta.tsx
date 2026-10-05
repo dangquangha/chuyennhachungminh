@@ -4,8 +4,8 @@ import { ArrowRight, CartIcon } from './icons'
 export default function ProductCta({ available }: { available: boolean }) {
   const sizing = 'min-h-11 px-2 text-[0.85rem]'
 
-  // Card nhỏ trong lưới 2 cột trên mobile: ẩn icon để chữ "Xem trên Shopee" không bị cắt
-  const compactIcons = 'hidden sm:block'
+  // Màn hình rất hẹp (<375px): ẩn icon để chữ "Xem trên Shopee" không bị cắt
+  const compactIcons = 'hidden min-[375px]:block'
 
   if (!available) {
     return (

@@ -4,6 +4,8 @@ export type Category = (typeof CATEGORIES)[number]
 
 export interface Product {
   id: string
+  /** Thứ tự hiển thị: số nhỏ hiện trước. Bỏ trống → xếp cuối, theo thứ tự trong file. */
+  order?: number
   name: string
   description: string
   /**

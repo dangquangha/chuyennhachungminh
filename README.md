@@ -24,6 +24,7 @@ Thư mục `dist/` là site tĩnh, deploy được lên Vercel, Netlify, Cloudfl
 ```ts
 {
   id: '10',                               // không trùng với sản phẩm khác
+  order: 1,                               // tuỳ chọn; số nhỏ hiện trước
   name: 'Tên sản phẩm',
   description: 'Một câu ngắn, giọng kể chuyện',
   image: '/products/ten-anh.webp',        // tuỳ chọn; bỏ trống → ảnh mặc định
@@ -34,7 +35,7 @@ Thư mục `dist/` là site tĩnh, deploy được lên Vercel, Netlify, Cloudfl
 }
 ```
 
-- Thứ tự trong mảng chính là thứ tự hiển thị.
+- Thứ tự hiển thị theo `order`, số nhỏ hiện trước. Muốn đưa một món lên đầu, chỉ cần đổi số `order` (ví dụ `0` hoặc `-1`), không cần di chuyển cả khối code. Sản phẩm không có `order` xếp sau cùng, theo thứ tự trong file.
 - Bộ lọc danh mục chỉ hiện khi có từ 6 sản phẩm trở lên và ít nhất 2 danh mục. Danh mục chưa có sản phẩm tự động bị ẩn.
 - Nếu mảng rỗng, trang hiện thông báo "Chúng mình đang cập nhật…".
 
@@ -82,5 +83,5 @@ scripts/prerender.mjs   Ghi HTML đã render vào dist/index.html
 
 - Màu `#E8897D` dùng cho điểm nhấn. Nút CTA dùng tông đậm hơn `#B85246` để chữ trắng đạt chuẩn tương phản WCAG AA (≥ 4.5:1).
 - Chữ phụ dùng `#6B625D` thay cho `#777`, vì `#777` trên nền kem không đạt chuẩn AA.
-- Dưới 360px (iPhone SE đời 1), card sản phẩm chuyển sang dạng ngang để không quá cao. Từ 360px trở lên là lưới 2 cột, từ 640px trở lên là 3 cột.
+- Card sản phẩm dạng ngang (ảnh trái, nội dung phải): 1 cột trên điện thoại, 2 cột từ 768px trở lên.
 - Animation tự tắt khi người dùng bật "Giảm chuyển động" trong cài đặt máy.

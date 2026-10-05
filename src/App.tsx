@@ -1,8 +1,11 @@
-import { products } from './data/products'
+import { products as allProducts } from './data/products'
+import { sortProducts } from './lib/products'
 import Header from './components/Header'
 import ProductSection from './components/ProductSection'
 import TikTokSection from './components/TikTokSection'
 import EmptyState from './components/EmptyState'
+
+const products = sortProducts(allProducts)
 
 export default function App() {
   const hasProducts = products.length > 0
