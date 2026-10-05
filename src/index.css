@@ -1,0 +1,89 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Be Vietnam Pro', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+
+  --color-cream: #fff9f5;
+  --color-blush: #fbe9e3;
+  --color-primary: #e8897d;
+  /* Bản đậm hơn của primary, đủ tương phản (≥4.5:1) cho chữ trắng trên nút */
+  --color-primary-strong: #b85246;
+  --color-primary-hover: #a4473c;
+  --color-ink: #333333;
+  /* #777 trên nền kem chỉ ~4.3:1, dùng xám ấm đậm hơn chút để đạt AA */
+  --color-muted: #6b625d;
+  --color-line: #f0e6e0;
+
+  --shadow-soft: 0 1px 2px rgb(120 72 56 / 0.04), 0 4px 16px rgb(120 72 56 / 0.06);
+  --shadow-lift: 0 2px 4px rgb(120 72 56 / 0.05), 0 12px 28px rgb(120 72 56 / 0.1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-primary-strong);
+    outline-offset: 3px;
+    border-radius: 12px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary-strong font-semibold text-white shadow-soft transition duration-150 select-none;
+    @apply hover:bg-primary-hover active:scale-[0.97] active:bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white font-semibold text-ink shadow-soft transition duration-150 select-none;
+    @apply hover:border-primary/50 active:scale-[0.97];
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Fade-in nhẹ khi section xuất hiện (xem components/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
