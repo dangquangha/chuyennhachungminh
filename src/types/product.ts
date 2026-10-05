@@ -6,8 +6,11 @@ export interface Product {
   id: string
   name: string
   description: string
-  /** Đường dẫn ảnh, ví dụ "/products/ong-dung-dua.jpg" (đặt file trong thư mục public/products) */
-  image: string
+  /**
+   * Ảnh sản phẩm: đường dẫn trong public (ví dụ "/products/tripod.jpg") hoặc link ảnh đầy đủ.
+   * Bỏ trống → dùng ảnh mặc định.
+   */
+  image?: string
   category: Category
   price?: string
   badge?: string

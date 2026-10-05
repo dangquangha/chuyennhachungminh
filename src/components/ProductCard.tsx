@@ -27,7 +27,7 @@ export default function ProductCard({ product, priority }: { product: Product; p
 
         <div className="flex min-w-0 flex-1 flex-col p-3 sm:p-4">
           <h3 className="line-clamp-2 text-[0.95rem] leading-snug font-semibold text-ink">{product.name}</h3>
-          <p className="mt-1 line-clamp-2 text-[0.82rem] leading-relaxed text-muted italic">“{product.description}”</p>
+          <p className="mt-1 line-clamp-3 text-[0.82rem] leading-relaxed text-muted italic">“{product.description}”</p>
           {product.price && <p className="mt-2 text-[0.95rem] font-bold text-primary-strong">{product.price}</p>}
           <div className="mt-auto pt-3">
             <ProductCta available={available} />

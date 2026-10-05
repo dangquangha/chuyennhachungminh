@@ -26,11 +26,11 @@ Thư mục `dist/` là site tĩnh, deploy được lên Vercel, Netlify, Cloudfl
   id: '10',                               // không trùng với sản phẩm khác
   name: 'Tên sản phẩm',
   description: 'Một câu ngắn, giọng kể chuyện',
-  image: '/products/ten-anh.webp',        // đặt file vào public/products/
+  image: '/products/ten-anh.webp',        // tuỳ chọn; bỏ trống → ảnh mặc định
   category: 'Đồ bếp',                     // phải nằm trong CATEGORIES (src/config/site.ts)
   price: '129.000đ',                      // tuỳ chọn
   badge: 'Đáng mua',                      // tuỳ chọn
-  shopeeUrl: 'https://s.shopee.vn/xxxx',  // để trống → card hiện "Sắp có link"
+  shopeeUrl: 'https://s.shopee.vn/xxxx',  // link affiliate; để trống → card hiện "Sắp có link"
 }
 ```
 
@@ -38,11 +38,11 @@ Thư mục `dist/` là site tĩnh, deploy được lên Vercel, Netlify, Cloudfl
 - Bộ lọc danh mục chỉ hiện khi có từ 6 sản phẩm trở lên và ít nhất 2 danh mục. Danh mục chưa có sản phẩm tự động bị ẩn.
 - Nếu mảng rỗng, trang hiện thông báo "Chúng mình đang cập nhật…".
 
-**Ảnh sản phẩm:** dùng ảnh vuông khoảng 800×800, định dạng `.webp` hoặc `.jpg`, dung lượng dưới 100KB. Ảnh `.svg` trong `public/products/` hiện chỉ là ảnh minh hoạ mẫu.
+**Ảnh sản phẩm:** dùng ảnh vuông khoảng 800×800, định dạng `.webp` hoặc `.jpg`, dung lượng dưới 100KB. Có thể đặt file vào `public/products/` hoặc dán link ảnh đầy đủ. Sản phẩm chưa có ảnh, hoặc có link ảnh bị lỗi, sẽ tự hiện ảnh mặc định `public/products/default.svg`.
 
 ## Thông tin kênh và link
 
-Sửa trong [`src/config/site.ts`](src/config/site.ts): tên kênh, tagline, avatar, TikTok handle/URL, link Shopee store, danh mục và tham số UTM.
+Sửa trong [`src/config/site.ts`](src/config/site.ts): tên kênh, tagline, avatar, TikTok handle/URL và danh mục.
 
 Khi đã có domain thật, thay `https://chuyennhachungminh.vn/` trong [`index.html`](index.html) (canonical, `og:url`, `og:image`).
 
@@ -52,7 +52,7 @@ Toàn bộ code tracking nằm trong [`src/lib/tracking.ts`](src/lib/tracking.ts
 
 - `handleProductClick(product, placement)`: được gọi mỗi khi bấm vào sản phẩm.
 - `trackEvent(...)`: tự gửi event tới **GA4** (`gtag`), **Meta Pixel** (`fbq`) và **TikTok Pixel** (`ttq`) nếu script tương ứng đã được nhúng. Chưa nhúng thì không có gì xảy ra.
-- Mọi link ra ngoài đều được gắn UTM (`utm_source=tiktok&utm_medium=bio_link…`), riêng link sản phẩm có thêm `utm_content=<id>`. Đặt `UTM_PARAMS = null` để tắt.
+- Link sản phẩm được giữ nguyên như link lấy từ Shopee Affiliate, không gắn thêm UTM: khi chuyển hướng, Shopee tự bỏ UTM lạ và chỉ giữ mã affiliate. Doanh thu theo từng link xem trong trang Shopee Affiliate.
 
 Để bật analytics, dán snippet của GA4, Meta hoặc TikTok vào `<head>` của `index.html`. Không cần sửa component.
 
@@ -62,17 +62,17 @@ Card sản phẩm dùng thẻ `<a target="_blank">` thay vì `window.open`, vì 
 
 ```
 src/
-  config/site.ts        Thông tin kênh, link, danh mục, UTM
+  config/site.ts        Thông tin kênh, link TikTok, danh mục
   data/products.ts      Danh sách sản phẩm (file duy nhất cần sửa thường xuyên)
   types/product.ts      Kiểu dữ liệu Product
-  lib/tracking.ts       Click tracking, UTM, kiểm tra URL
+  lib/tracking.ts       Click tracking, kiểm tra URL
   hooks/useInView.ts    IntersectionObserver cho hiệu ứng fade-in
   components/
     Header                            Phần đầu trang (avatar, tên kênh, TikTok)
     ProductSection, CategoryFilter    Danh sách và bộ lọc (filter dính trên đầu khi cuộn)
     ProductCard, ProductLink,
     ProductImage, ProductCta, Badge   Các phần của card sản phẩm
-    ShopeeCta, TikTokSection, Footer
+    TikTokSection
     EmptyState, Reveal, SectionTitle, icons
   entry-server.tsx      Dùng khi build để prerender HTML
 scripts/prerender.mjs   Ghi HTML đã render vào dist/index.html

@@ -1,4 +1,3 @@
-import { UTM_PARAMS } from '../config/site'
 import type { Product } from '../types/product'
 
 /**
@@ -8,7 +7,7 @@ import type { Product } from '../types/product'
 
 type TrackingEvent =
   | { name: 'product_click'; product: Product }
-  | { name: 'outbound_click'; target: 'shopee_store' | 'tiktok'; placement: string }
+  | { name: 'outbound_click'; target: 'tiktok'; placement: string }
 
 declare global {
   interface Window {
@@ -40,20 +39,6 @@ export function trackEvent(event: TrackingEvent): void {
   }
 }
 
-/** Gắn UTM vào URL (không ghi đè tham số đã có sẵn). */
-export function withUtm(url: string, extra?: Record<string, string>): string {
-  if (!UTM_PARAMS) return url
-  try {
-    const u = new URL(url)
-    for (const [key, value] of Object.entries({ ...UTM_PARAMS, ...extra })) {
-      if (!u.searchParams.has(key)) u.searchParams.set(key, value)
-    }
-    return u.toString()
-  } catch {
-    return url
-  }
-}
-
 export function hasValidUrl(url?: string): url is string {
   if (!url) return false
   try {
@@ -65,7 +50,8 @@ export function hasValidUrl(url?: string): url is string {
 }
 
 export function getProductUrl(product: Product): string | null {
-  return hasValidUrl(product.shopeeUrl) ? withUtm(product.shopeeUrl, { utm_content: product.id }) : null
+  // Giữ nguyên link affiliate: Shopee tự bỏ UTM lạ khi redirect và chỉ giữ mã affiliate
+  return hasValidUrl(product.shopeeUrl) ? product.shopeeUrl : null
 }
 
 /**

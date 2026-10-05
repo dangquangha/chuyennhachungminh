@@ -7,7 +7,7 @@ export default function TikTokSection() {
   return (
     <Reveal className="mt-10">
       <section aria-labelledby="tiktok-title" className="rounded-[20px] bg-blush/70 px-5 py-8 text-center">
-        <h2 id="tiktok-title" className="font-display text-[1.3rem] font-bold text-ink sm:text-2xl">
+        <h2 id="tiktok-title" className="font-display text-[1.3rem] font-bold text-balance text-ink sm:text-2xl">
           Xem chúng mình trên TikTok ❤️
         </h2>
         <p className="mx-auto mt-2 max-w-md text-[0.95rem] leading-relaxed text-pretty text-muted">
