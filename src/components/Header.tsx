@@ -19,30 +19,32 @@ export default function Header() {
       <h1 className="mt-3 font-display text-[1.6rem] leading-tight font-bold text-ink">{SITE.name}</h1>
       <p className="mt-1 text-[0.95rem] text-balance text-muted">{SITE.tagline}</p>
 
-      {/* <div className="mt-3 flex justify-center gap-3">
-        <a
-          href={SITE.tiktokUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() => trackEvent({ name: 'outbound_click', target: 'tiktok', placement: 'header' })}
-          className="btn-icon"
-          aria-label={`TikTok ${SITE.tiktokHandle} (mở tab mới)`}
-          title={`TikTok ${SITE.tiktokHandle}`}
-        >
-          <TikTokIcon className="size-5" />
-        </a>
-        {SITE.contactEmail && (
+      {false && (
+        <div className="mt-3 flex justify-center gap-3">
           <a
-            href={`mailto:${SITE.contactEmail}`}
-            onClick={() => trackEvent({ name: 'outbound_click', target: 'email', placement: 'header' })}
+            href={SITE.tiktokUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackEvent({ name: 'outbound_click', target: 'tiktok', placement: 'header' })}
             className="btn-icon"
-            aria-label={`Gửi email liên hệ: ${SITE.contactEmail}`}
-            title={SITE.contactEmail}
+            aria-label={`TikTok ${SITE.tiktokHandle} (mở tab mới)`}
+            title={`TikTok ${SITE.tiktokHandle}`}
           >
-            <MailIcon className="size-5" />
+            <TikTokIcon className="size-5" />
           </a>
-        )}
-      </div> */}
+          {SITE.contactEmail && (
+            <a
+              href={`mailto:${SITE.contactEmail}`}
+              onClick={() => trackEvent({ name: 'outbound_click', target: 'email', placement: 'header' })}
+              className="btn-icon"
+              aria-label={`Gửi email liên hệ: ${SITE.contactEmail}`}
+              title={SITE.contactEmail}
+            >
+              <MailIcon className="size-5" />
+            </a>
+          )}
+        </div>
+      )}
     </header>
   )
 }
